@@ -7,7 +7,7 @@
     <AutomaticallyUseReferenceAssemblyPackages>false</AutomaticallyUseReferenceAssemblyPackages>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <AssemblyName>SoldStockOptimizer</AssemblyName>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <GameDir Condition="'$(GameDir)' == ''">C:\Apps\steam\steamapps\common\Probably Stolen</GameDir>
     <GameManaged Condition="'$(GameManaged)' == ''">$(GameDir)\Probably Stolen_Data\Managed</GameManaged>
   </PropertyGroup>

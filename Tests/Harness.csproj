@@ -9,6 +9,7 @@
   <ItemGroup>
     <Compile Include="$(ChainRoot)/Core/**/*.cs" /><Compile Include="$(ChainRoot)/src/**/*.cs" />
     <Compile Include="Runner.cs" />
+    <Compile Include="InventoryScenario.cs" />
     <Reference Include="SoldStockOptimizer"><HintPath>../bin/Release/netstandard2.1/SoldStockOptimizer.dll</HintPath><Private>false</Private></Reference>
     <EmbeddedResource Include="$(ChainRoot)/assets/art/runtime/*.png" LogicalName="ChainStores.Art.%(Filename)%(Extension)" />
     <EmbeddedResource Include="$(ChainRoot)/assets/localization/*.json" LogicalName="ChainStores.Lang.%(Filename)" />

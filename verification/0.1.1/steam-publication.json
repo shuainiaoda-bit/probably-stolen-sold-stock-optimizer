@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "title": "已售物品优化：卖出东西不放在雷霆大包",
+  "workshopId": "3841557483",
+  "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3841557483",
+  "public": true,
+  "version": "0.1.1",
+  "downloadedFilesMatch": true,
+  "subscriptionUnchanged": true,
+  "localInstallMatchesPublished": true,
+  "archiveSha256": "382e3da5688837e3e212685e6982a4f5b2cee2dae94853e99bacee99edde95a9",
+  "shippingSha256": "d97a233a1996b37e1f7efd57098dd1c363953240bdcbc1e8d00be77ceae04106",
+  "payloadHash": "4bebebb0f8ba38f71f9c0160924af09583564542c8e2396716fd22d120cd1a80",
+  "verifiedAtUtc": "2026-11-17T20:37:41.7721312Z"
+}

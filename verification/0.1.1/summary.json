@@ -1,0 +1,162 @@
+{
+  "status": "PASS",
+  "version": "0.1.1",
+  "gameVersion": "1.0.0.15",
+  "gameSha256": "29c654b03c140ee35311e0108cd818f7979ffb19205644c7b11e385645fbddbb",
+  "shippingSha256": "d97a233a1996b37e1f7efd57098dd1c363953240bdcbc1e8d00be77ceae04106",
+  "graphics": "Direct3D11",
+  "queries": [
+    {
+      "count": 1000,
+      "baseline": {
+        "queries": 200,
+        "allMs": 40.2706,
+        "ownedMs": 59.46,
+        "saveScanMs": 82.6067
+      },
+      "optimized": {
+        "queries": 200,
+        "allMs": 13.589,
+        "ownedMs": 28.962300000000003,
+        "saveScanMs": 42.7078
+      },
+      "speedup": 2.963470454043712
+    },
+    {
+      "count": 2000,
+      "baseline": {
+        "queries": 200,
+        "allMs": 97.56660000000001,
+        "ownedMs": 132.8262,
+        "saveScanMs": 155.7802
+      },
+      "optimized": {
+        "queries": 200,
+        "allMs": 30.1883,
+        "ownedMs": 66.7397,
+        "saveScanMs": 73.2195
+      },
+      "speedup": 3.2319342261737165
+    }
+  ],
+  "sorting": [
+    {
+      "count": 300,
+      "baseline": {
+        "sortMs": 370.4354,
+        "undoMs": 376.4547
+      },
+      "optimized": {
+        "sortMs": 138.5196,
+        "undoMs": 129.98690000000002
+      },
+      "speedup": 2.674245377549459
+    },
+    {
+      "count": 600,
+      "baseline": {
+        "sortMs": 1514.679,
+        "undoMs": 1576.5334
+      },
+      "optimized": {
+        "sortMs": 460.4789,
+        "undoMs": 432.3596
+      },
+      "speedup": 3.289355929229331
+    }
+  ],
+  "sales": [
+    {
+      "count": 1000,
+      "baseline": {
+        "saleMs": 4348.134200000001,
+        "last100Ms": 842.0563999999999,
+        "saveMs": 224.01590000000002,
+        "closeMs": 926.6044
+      },
+      "optimized": {
+        "saleMs": 305.08499999999987,
+        "last100Ms": 33.468799999999995,
+        "saveMs": 217.2116,
+        "closeMs": 966.8613
+      },
+      "speedup": 14.252205778717418
+    },
+    {
+      "count": 2000,
+      "baseline": {
+        "saleMs": 18660.244199999997,
+        "last100Ms": 1808.0472999999988,
+        "saveMs": 461.50480000000005,
+        "closeMs": 5843.252600000001
+      },
+      "optimized": {
+        "saleMs": 677.7176000000004,
+        "last100Ms": 37.9228,
+        "saveMs": 392.5946,
+        "closeMs": 6263.8649000000005
+      },
+      "speedup": 27.533952489945644
+    }
+  ],
+  "probes": [
+    {
+      "kind": "traversal-list-copies",
+      "count": 1000,
+      "optimized": false,
+      "gridCopies": 10,
+      "itemCopies": 1038
+    },
+    {
+      "kind": "traversal-list-copies",
+      "count": 1000,
+      "optimized": true,
+      "gridCopies": 0,
+      "itemCopies": 0
+    },
+    {
+      "kind": "traversal-list-copies",
+      "count": 2000,
+      "optimized": false,
+      "gridCopies": 10,
+      "itemCopies": 2037
+    },
+    {
+      "kind": "traversal-list-copies",
+      "count": 2000,
+      "optimized": true,
+      "gridCopies": 0,
+      "itemCopies": 0
+    },
+    {
+      "kind": "sorting-refresh-count",
+      "count": 300,
+      "optimized": false,
+      "stockRefreshes": 45748
+    },
+    {
+      "kind": "sorting-refresh-count",
+      "count": 300,
+      "optimized": true,
+      "stockRefreshes": 599
+    },
+    {
+      "kind": "sorting-refresh-count",
+      "count": 600,
+      "optimized": false,
+      "stockRefreshes": 181498
+    },
+    {
+      "kind": "sorting-refresh-count",
+      "count": 600,
+      "optimized": true,
+      "stockRefreshes": 1199
+    }
+  ],
+  "inventoryChecks": 129,
+  "salesChecks": 79,
+  "nativeTrustEdited": false,
+  "userDataRestored": true,
+  "allLocalModsRestored": true,
+  "workshopUnchanged": true
+}

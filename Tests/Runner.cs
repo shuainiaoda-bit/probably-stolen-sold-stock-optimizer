@@ -25,7 +25,7 @@ namespace SoldStockChecks
         }
     }
 
-    sealed class Runner : MonoBehaviour
+    sealed partial class Runner : MonoBehaviour
     {
         IEnumerator flow;
         float resume;
@@ -137,6 +137,14 @@ namespace SoldStockChecks
             startingReputation = PlayerStore.Instance.storeReputations.ToDictionary(r => r.factionId, r => r.GetReputationExact());
             Check(EmporiumEntry.Instance.soldElement.childItems.Count == 0, "Fresh disposable game has an empty sold bag");
             Seed();
+            if (Environment.GetCommandLineArgs().Contains("-sold-stock-inventory"))
+            {
+                var extra = InventoryScenario(); while (extra.MoveNext()) yield return extra.Current;
+                var chemistryCheck = ChemistryRegression(); while (chemistryCheck.MoveNext()) yield return chemistryCheck.Current;
+                var reloadCheck = ReloadRegression(); while (reloadCheck.MoveNext()) yield return reloadCheck.Current;
+                Check(errors.Count == 0, "Inventory performance scenarios captured no runtime errors");
+                yield break;
+            }
             // Warm both paths before recording measurements.
             foreach (bool enabled in new[] { false, true })
             {

@@ -31,6 +31,7 @@ namespace SoldStockOptimizer
                 Patch(typeof(GameGridInventory), "UncheckedAccept", postfix: nameof(InventoryChanged));
                 Patch(typeof(GameGridInventory), "Expel", postfix: nameof(InventoryChanged));
                 Patch(typeof(SoldItem), "HandleSoldItem", transpiler: nameof(UseLiveCleanupList));
+                InventoryPerformance.Install(harmony);
                 ModHook.OnGameLoadedInit += Reset;
                 Enabled = true;
             }
@@ -52,14 +53,18 @@ namespace SoldStockOptimizer
 
         public void OnDisable()
         {
-            Enabled = false;
-            ModHook.OnGameLoadedInit -= Reset;
-            harmony?.UnpatchAll(PatchId);
-            harmony = null;
-            Reset();
+            try { InventoryPerformance.Flush(); }
+            finally
+            {
+                Enabled = false;
+                ModHook.OnGameLoadedInit -= Reset;
+                harmony?.UnpatchAll(PatchId);
+                harmony = null;
+                Reset();
+            }
         }
 
-        static void Reset() { indexedBag = null; index = null; }
+        static void Reset() { indexedBag = null; index = null; InventoryPerformance.Reset(); }
 
         static bool IsSoldBag(GameGridInventory bag) => Enabled && bag != null &&
             EmporiumEntry.Instance != null && ReferenceEquals(bag, EmporiumEntry.Instance.soldElement);
