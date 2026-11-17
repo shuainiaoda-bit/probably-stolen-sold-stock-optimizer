@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework><LangVersion>latest</LangVersion><Nullable>disable</Nullable>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences><AutomaticallyUseReferenceAssemblyPackages>false</AutomaticallyUseReferenceAssemblyPackages>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems><AssemblyName>ChainStores</AssemblyName><Version>0.1.3</Version>
+    <ChainRoot Condition="'$(ChainRoot)' == ''">C:\game_develop\ProbablyStolenChainStoresMod</ChainRoot>
+    <GameManaged Condition="'$(GameManaged)' == ''">C:\Apps\steam\steamapps\common\Probably Stolen\Probably Stolen_Data\Managed</GameManaged>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(ChainRoot)/Core/**/*.cs" /><Compile Include="$(ChainRoot)/src/**/*.cs" />
+    <Compile Include="Runner.cs" />
+    <Reference Include="SoldStockOptimizer"><HintPath>../bin/Release/netstandard2.1/SoldStockOptimizer.dll</HintPath><Private>false</Private></Reference>
+    <EmbeddedResource Include="$(ChainRoot)/assets/art/runtime/*.png" LogicalName="ChainStores.Art.%(Filename)%(Extension)" />
+    <EmbeddedResource Include="$(ChainRoot)/assets/localization/*.json" LogicalName="ChainStores.Lang.%(Filename)" />
+    <EmbeddedResource Include="$(ChainRoot)/docs/连锁经营说明.md" LogicalName="ChainStores.Help.GettingStarted" />
+    <Reference Include="$(GameManaged)\*.dll" Private="false" />
+  </ItemGroup>
+</Project>

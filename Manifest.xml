@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Manifest>
+  <ID>sold_stock_optimizer</ID>
+  <Name>已售物品优化：卖出东西不放在雷霆大包</Name>
+  <Author>是大帅鸟</Author>
+  <ModVersion>0.1.0</ModVersion>
+  <Description>减少隐藏已售仓库的重复 UI 刷新、查询与清理开销，保留原版商品数据和顾客反馈结算。</Description>
+  <GameVersions><Version>1.0.0.15</Version></GameVersions>
+  <Prerequisites/>
+  <Assemblies><Assembly>SoldStockOptimizer.dll</Assembly></Assemblies>
+  <Capabilities><Capability>reflection-external</Capability></Capabilities>
+</Manifest>

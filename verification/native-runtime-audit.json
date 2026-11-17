@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "modId": "sold_stock_optimizer",
+  "modVersion": "0.1.0",
+  "refused": false,
+  "error": null,
+  "capabilities": [
+    "reflection-external"
+  ],
+  "declared": [
+    "reflection-external"
+  ],
+  "findings": "reflection-external: SoldStockOptimizer.ModEntry.Patch -\u003E AccessTools.Method on a computed type",
+  "resolvedPrerequisites": [],
+  "methodsScanned": 16,
+  "gameAssemblySha256": "29C654B03C140EE35311E0108CD818F7979FFB19205644C7B11E385645FBDDBB",
+  "gameExecuted": false,
+  "trustEdited": false
+}

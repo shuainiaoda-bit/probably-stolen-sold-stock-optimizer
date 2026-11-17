@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "count": 1000,
+      "baseline": {
+        "saleMs": 2415.7752000000005,
+        "first100Ms": 36.9118,
+        "last100Ms": 489.2724999999999,
+        "lookupMs": 15.426,
+        "saveMs": 169.9263,
+        "closeMs": 706.6788,
+        "saleRangeMs": [
+          2312.040900000001,
+          2548.840500000002
+        ]
+      },
+      "optimized": {
+        "saleMs": 216.24670000000006,
+        "first100Ms": 19.17290000000001,
+        "last100Ms": 22.964899999999993,
+        "lookupMs": 0.2801,
+        "saveMs": 169.4695,
+        "closeMs": 753.192,
+        "saleRangeMs": [
+          214.03130000000007,
+          221.593
+        ]
+      },
+      "speedup": 11.171385274318636,
+      "saleTimeReductionPercent": 91.04855865727903
+    },
+    {
+      "count": 2000,
+      "baseline": {
+        "saleMs": 12500.744999999983,
+        "first100Ms": 36.83960000000001,
+        "last100Ms": 1340.8103999999998,
+        "lookupMs": 37.9286,
+        "saveMs": 368.6673,
+        "closeMs": 5090.5187000000005,
+        "saleRangeMs": [
+          11938.95490000002,
+          12570.79549999999
+        ]
+      },
+      "optimized": {
+        "saleMs": 497.15030000000013,
+        "first100Ms": 19.265,
+        "last100Ms": 28.968500000000017,
+        "lookupMs": 0.31980000000000003,
+        "saveMs": 308.52090000000004,
+        "closeMs": 4979.2384,
+        "saleRangeMs": [
+          486.6417,
+          499.8346000000001
+        ]
+      },
+      "speedup": 25.1448002746855,
+      "saleTimeReductionPercent": 96.02303462713621
+    }
+  ],
+  "rawResult": "benchmark-results.json",
+  "shippingSha256": "20bf0d40ce0d2e8c47fb982aba07a9aef2af2bfd7471f5f1df3d86ee243e57d7",
+  "gameSha256": "29c654b03c140ee35311e0108cd818f7979ffb19205644c7b11e385645fbddbb",
+  "gameVersion": "1.0.0.15",
+  "graphics": "Direct3D11",
+  "checks": 79,
+  "runtimeErrors": [],
+  "nativeTrustEdited": false,
+  "userDataRestored": true,
+  "allLocalModsRestored": true,
+  "workshopUnchanged": true,
+  "allocationMeasurement": "The Unity allocation counter returned zero; no memory-allocation reduction is claimed."
+}

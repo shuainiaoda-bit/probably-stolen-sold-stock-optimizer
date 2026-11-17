@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "appId": "4348910",
+  "modId": "sold_stock_optimizer",
+  "publishedFileId": "3841557483",
+  "requiredItems": [],
+  "title": "已售物品优化：卖出东西不放在雷霆大包",
+  "workshopUrl": "https://steamcommunity.com/sharedfiles/filedetails/?id=3841557483",
+  "release": "0.1.0",
+  "payloadHash": "ace01b25379da2e55163240d5c5ed2a3a3256da21f06a822c55b8085348d081e",
+  "verification": "../verification/steam-publication.json"
+}

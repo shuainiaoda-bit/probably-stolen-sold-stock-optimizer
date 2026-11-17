@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <AutomaticallyUseReferenceAssemblyPackages>false</AutomaticallyUseReferenceAssemblyPackages>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AssemblyName>SoldStockOptimizer</AssemblyName>
+    <Version>0.1.0</Version>
+    <GameDir Condition="'$(GameDir)' == ''">C:\Apps\steam\steamapps\common\Probably Stolen</GameDir>
+    <GameManaged Condition="'$(GameManaged)' == ''">$(GameDir)\Probably Stolen_Data\Managed</GameManaged>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="src/**/*.cs" />
+    <Reference Include="$(GameManaged)\*.dll" Private="false" />
+  </ItemGroup>
+</Project>

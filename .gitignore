@@ -1,0 +1,6 @@
+bin/
+obj/
+.work/
+*.user
+*.suo
+__pycache__/
