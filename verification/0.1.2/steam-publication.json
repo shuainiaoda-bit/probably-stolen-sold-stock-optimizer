@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "version": "0.1.2",
+  "title": "已售物品优化：卖出东西不放在雷霆大包",
+  "workshopId": "3841557483",
+  "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3841557483",
+  "public": true,
+  "downloadedFilesMatch": true,
+  "subscriptionUnchanged": true,
+  "githubVerifiedBeforeSteamUpdate": true,
+  "githubRelease": "https://github.com/shuainiaoda-bit/probably-stolen-sold-stock-optimizer/releases/tag/v0.1.2",
+  "localInstallMatchesPublished": true,
+  "archiveSha256": "13ad05b53372a0405eb905e75604ca3b897303cd71611e762ad475ac9cadba81",
+  "shippingSha256": "c1fd2350fd6a2e27002ff8885e57eb912dc0a6711789cfeded681078987158cd",
+  "payloadHash": "c8b627dbb81699876fd19718d5a8e39c2642f8f11cb1b9f8e7cbb240b173d416",
+  "verifiedAtUtc": "2026-11-18T05:00:16.2958251Z"
+}

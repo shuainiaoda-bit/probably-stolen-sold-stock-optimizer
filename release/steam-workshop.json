@@ -6,7 +6,7 @@
   "requiredItems": [],
   "title": "已售物品优化：卖出东西不放在雷霆大包",
   "workshopUrl": "https://steamcommunity.com/sharedfiles/filedetails/?id=3841557483",
-  "release": "0.1.1",
-  "payloadHash": "4bebebb0f8ba38f71f9c0160924af09583564542c8e2396716fd22d120cd1a80",
-  "verification": "../verification/0.1.1/steam-publication.json"
+  "release": "0.1.2",
+  "payloadHash": "c8b627dbb81699876fd19718d5a8e39c2642f8f11cb1b9f8e7cbb240b173d416",
+  "verification": "../verification/0.1.2/steam-publication.json"
 }
