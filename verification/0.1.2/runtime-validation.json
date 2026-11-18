@@ -1,0 +1,370 @@
+{
+  "status": "PASS",
+  "version": "0.1.2",
+  "gameVersion": "1.0.0.15 open_beta",
+  "gameAssemblySha256": "29c654b03c140ee35311e0108cd818f7979ffb19205644c7b11e385645fbddbb",
+  "shippingSha256": "c1fd2350fd6a2e27002ff8885e57eb912dc0a6711789cfeded681078987158cd",
+  "archiveSha256": "13ad05b53372a0405eb905e75604ca3b897303cd71611e762ad475ac9cadba81",
+  "shippingPackageUnchanged": true,
+  "nativeLoader": true,
+  "productionEntryInvokedManually": false,
+  "otherModRuntimeDisabled": false,
+  "observerHost": "Temporary observer merged into Chain Stores 0.1.3; its original gameplay logic remains active",
+  "modCount": 11,
+  "otherModCount": 10,
+  "coldStarts": 2,
+  "checksPerColdStart": 36,
+  "totalChecks": 72,
+  "soldItemsPerColdStart": 2000,
+  "totalSoldItems": 4000,
+  "phases": [
+    {
+      "phase": "cold-start-optimizer-last",
+      "status": "PASS",
+      "checks": [
+        "Silent background launch flags are present",
+        "Native loader enabled hollow.clientdemandhighlight",
+        "Native loader enabled shutter_events",
+        "Native loader enabled item_details",
+        "Native loader enabled local.autobattery",
+        "Native loader enabled combat_contracts",
+        "Native loader enabled silent_spire",
+        "Native loader enabled chiqingsan.SmartInventoryArrange",
+        "Native loader enabled faction_reputation_expansion",
+        "Native loader enabled reputation_pop",
+        "Native loader enabled chain_stores",
+        "Native loader enabled sold_stock_optimizer",
+        "Exact production 0.1.2 assembly owns its native entry",
+        "Production optimizer Enabled flag is true",
+        "Chain Stores runtime stays enabled throughout compatibility validation",
+        "Production traversal patches installed in the Unity runtime",
+        "Chain Stores binds the disposable campaign without error",
+        "Disposable sold inventory starts empty",
+        "2000 sales preserve all proceeds with other mods active",
+        "2000 sold items preserve order and identity",
+        "Every sold record resolves the exact shipping indexed item",
+        "Patched owned query returns no duplicate physical items",
+        "Repeated patched queries keep native order",
+        "Native backpack accepts sort fixture energy_credit",
+        "Native backpack accepts sort fixture handmade_pistol",
+        "Native backpack accepts sort fixture bandage_item",
+        "Native sorting succeeds with production batch patch",
+        "Native sorting preserves every physical item",
+        "Native sorting undo succeeds",
+        "Smart Inventory Arrange native menu extension is present",
+        "Actual smart-sort native action is available",
+        "Actual smart sort preserves item identities and quantities",
+        "Native save preserves active Chain Stores state",
+        "Native closing clears all 2000 sold items and records",
+        "Both production mods remain enabled after trade, sort, save and closing",
+        "No runtime Error, Exception or Assert messages"
+      ],
+      "errors": [],
+      "observations": [
+        {
+          "kind": "native-catalogue-order",
+          "ids": [
+            "hollow.clientdemandhighlight",
+            "shutter_events",
+            "item_details",
+            "local.autobattery",
+            "combat_contracts",
+            "silent_spire",
+            "chiqingsan.SmartInventoryArrange",
+            "faction_reputation_expansion",
+            "reputation_pop",
+            "chain_stores",
+            "sold_stock_optimizer"
+          ]
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "hollow.clientdemandhighlight",
+          "version": "1.3.6",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "shutter_events",
+          "version": "1.3.4",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "item_details",
+          "version": "0.9.6",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "local.autobattery",
+          "version": "1.0.21",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "combat_contracts",
+          "version": "0.4.15",
+          "source": "Local",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "silent_spire",
+          "version": "0.1.18",
+          "source": "Local",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "chiqingsan.SmartInventoryArrange",
+          "version": "1.3.5",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "faction_reputation_expansion",
+          "version": "1.5.8.1",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "reputation_pop",
+          "version": "1.1.0",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "chain_stores",
+          "version": "0.1.3",
+          "source": "Local",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "sold_stock_optimizer",
+          "version": "0.1.2",
+          "source": "Local",
+          "error": null
+        },
+        {
+          "kind": "production-patches",
+          "methods": [
+            "EmporiumEntry.CollectOwnedItems",
+            "EmporiumEntry.GetAllItems",
+            "EmporiumEntry.GetItemFromSoldElement",
+            "GameGridInventory.Expel",
+            "GameGridInventory.UncheckedAccept",
+            "GameGridInventory.Validate",
+            "InventorySortHelper.Commit",
+            "NegociationUIManager.BuyMultipleItem",
+            "NegociationUIManager.SellMultiple",
+            "PlayerStore.FindAllItem",
+            "SoldItem.HandleSoldItem"
+          ]
+        },
+        {
+          "kind": "sales",
+          "count": 2000,
+          "wallMilliseconds": 4529.3743,
+          "performanceComparison": false
+        }
+      ],
+      "desktopVerified": true,
+      "audioGuardAttachedBeforeFirstGameInstruction": true,
+      "exitCode": 0
+    },
+    {
+      "phase": "cold-start-optimizer-first",
+      "status": "PASS",
+      "checks": [
+        "Silent background launch flags are present",
+        "Native loader enabled hollow.clientdemandhighlight",
+        "Native loader enabled shutter_events",
+        "Native loader enabled item_details",
+        "Native loader enabled local.autobattery",
+        "Native loader enabled combat_contracts",
+        "Native loader enabled silent_spire",
+        "Native loader enabled chiqingsan.SmartInventoryArrange",
+        "Native loader enabled faction_reputation_expansion",
+        "Native loader enabled reputation_pop",
+        "Native loader enabled chain_stores",
+        "Native loader enabled sold_stock_optimizer",
+        "Exact production 0.1.2 assembly owns its native entry",
+        "Production optimizer Enabled flag is true",
+        "Chain Stores runtime stays enabled throughout compatibility validation",
+        "Production traversal patches installed in the Unity runtime",
+        "Chain Stores binds the disposable campaign without error",
+        "Disposable sold inventory starts empty",
+        "2000 sales preserve all proceeds with other mods active",
+        "2000 sold items preserve order and identity",
+        "Every sold record resolves the exact shipping indexed item",
+        "Patched owned query returns no duplicate physical items",
+        "Repeated patched queries keep native order",
+        "Native backpack accepts sort fixture energy_credit",
+        "Native backpack accepts sort fixture handmade_pistol",
+        "Native backpack accepts sort fixture bandage_item",
+        "Native sorting succeeds with production batch patch",
+        "Native sorting preserves every physical item",
+        "Native sorting undo succeeds",
+        "Smart Inventory Arrange native menu extension is present",
+        "Actual smart-sort native action is available",
+        "Actual smart sort preserves item identities and quantities",
+        "Native save preserves active Chain Stores state",
+        "Native closing clears all 2000 sold items and records",
+        "Both production mods remain enabled after trade, sort, save and closing",
+        "No runtime Error, Exception or Assert messages"
+      ],
+      "errors": [],
+      "observations": [
+        {
+          "kind": "native-catalogue-order",
+          "ids": [
+            "sold_stock_optimizer",
+            "hollow.clientdemandhighlight",
+            "shutter_events",
+            "item_details",
+            "local.autobattery",
+            "combat_contracts",
+            "silent_spire",
+            "chiqingsan.SmartInventoryArrange",
+            "faction_reputation_expansion",
+            "reputation_pop",
+            "chain_stores"
+          ]
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "hollow.clientdemandhighlight",
+          "version": "1.3.6",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "shutter_events",
+          "version": "1.3.4",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "item_details",
+          "version": "0.9.6",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "local.autobattery",
+          "version": "1.0.21",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "combat_contracts",
+          "version": "0.4.15",
+          "source": "Local",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "silent_spire",
+          "version": "0.1.18",
+          "source": "Local",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "chiqingsan.SmartInventoryArrange",
+          "version": "1.3.5",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "faction_reputation_expansion",
+          "version": "1.5.8.1",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "reputation_pop",
+          "version": "1.1.0",
+          "source": "Workshop",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "chain_stores",
+          "version": "0.1.3",
+          "source": "Local",
+          "error": null
+        },
+        {
+          "kind": "loaded-mod",
+          "id": "sold_stock_optimizer",
+          "version": "0.1.2",
+          "source": "Local",
+          "error": null
+        },
+        {
+          "kind": "production-patches",
+          "methods": [
+            "EmporiumEntry.CollectOwnedItems",
+            "EmporiumEntry.GetAllItems",
+            "EmporiumEntry.GetItemFromSoldElement",
+            "GameGridInventory.Expel",
+            "GameGridInventory.UncheckedAccept",
+            "GameGridInventory.Validate",
+            "InventorySortHelper.Commit",
+            "NegociationUIManager.BuyMultipleItem",
+            "NegociationUIManager.SellMultiple",
+            "PlayerStore.FindAllItem",
+            "SoldItem.HandleSoldItem"
+          ]
+        },
+        {
+          "kind": "sales",
+          "count": 2000,
+          "wallMilliseconds": 4546.1828000000005,
+          "performanceComparison": false
+        }
+      ],
+      "desktopVerified": true,
+      "audioGuardAttachedBeforeFirstGameInstruction": true,
+      "exitCode": 0
+    }
+  ],
+  "audio": {
+    "status": "PASS",
+    "gameVolumesZeroBeforeEveryLaunch": true,
+    "noaudioArgument": true,
+    "targetSessions": 2,
+    "allTargetSessionsMuteVerified": true,
+    "targetSessionObservations": 1417,
+    "verifiedScans": 1444,
+    "maximumTargetPeak": 0.0,
+    "otherAppVolumeWrites": 0,
+    "errors": []
+  },
+  "restoration": {
+    "userDataAndTrustRestored": true,
+    "allLocalModsRestored": true,
+    "workshopUnchanged": true
+  },
+  "nativeTrustFabricated": false,
+  "osInputUsed": false,
+  "newPerformanceComparison": false,
+  "scope": "The listed 11 installed versions, two native load orders, 2000 sales per disposable campaign, native queries, sort/undo, actual Smart Inventory Arrange action, save and sold-item settlement",
+  "verifiedAtUtc": "2026-11-18T05:59:59.253755+00:00"
+}
