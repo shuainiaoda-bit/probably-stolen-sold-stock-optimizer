@@ -1,14 +1,20 @@
 # 已售物品优化：卖出东西不放在雷霆大包
 
-《深空当铺》的独立性能 Mod，版本 **0.1.1**，适用于 **1.0.0.15 测试版**。作者：是大帅鸟。
+《深空当铺》的独立性能 Mod，版本 **0.1.2**，适用于 **1.0.0.15 测试版**。作者：是大帅鸟。
 
-[Steam 创意工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3841557483) · [下载 0.1.1](https://github.com/shuainiaoda-bit/probably-stolen-sold-stock-optimizer/releases/tag/v0.1.1) · [0.1.1 完整测试报告](docs/性能检查与测试-0.1.1.md)
+[Steam 创意工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3841557483) · [下载 0.1.2](https://github.com/shuainiaoda-bit/probably-stolen-sold-stock-optimizer/releases/tag/v0.1.2) · [0.1.1 完整测试报告](docs/性能检查与测试-0.1.1.md)
 
 同一天连续出售大量商品时，隐藏已售仓库会反复刷新已有商品的 UI。本 Mod 跳过这些不可见的重复刷新，为已售物品建立编号索引，并减少清理时的列表复制。
 
 售卖收入、商品数据、嵌套内容和顾客反馈继续按原版流程处理。需要后续结算的商品仍保留到原版结算完成。
 
-## 0.1.1 新增优化
+## 0.1.2 加载兼容修复
+
+修复 `GetAllItems traversal changed; expected 10 calls, found 0.` 导致整个 Mod 加载失败的问题。按实际签名匹配查询调用，遇到不同代码结构或缺失可选方法时保留对应的现有实现，让其他可用优化继续安装。
+
+本轮通过 24 项离线兼容检查及原生权限扫描，未启动游戏或播放音频。[修复与验证说明](docs/兼容性修复与验证-0.1.2.md) · [检查记录](verification/0.1.2/compatibility-results.json)。
+
+## 0.1.1 历史优化与性能数据
 
 - 全店、自有及存档物品查询：减少遍历中的临时子列表，保留顺序和独立返回结果。
 - 原版排列、撤销和批量交易：同步操作结束时统一刷新仓库 UI，保留原版算法和增删事件。
@@ -17,7 +23,7 @@
 
 以上为真实游戏三轮中位数。库存压力测试扩大了临时仓库并使用简化背景，衡量方法处理耗时，不能直接换算为画面帧率。
 
-## 本轮大量售卖复测
+## 0.1.1 历史大量售卖实测
 
 真实游戏后台静音测试，相同电脑和 Mod 组合，每组交替测试三轮，以下为中位数。
 
@@ -32,7 +38,7 @@
 
 ## 安装
 
-可以通过 Steam 创意工坊订阅，也可以在 [Release](https://github.com/shuainiaoda-bit/probably-stolen-sold-stock-optimizer/releases/tag/v0.1.1) 下载 `SoldStockOptimizer-0.1.1.zip`。解压后将 `SoldStockOptimizer` 文件夹放入游戏目录的 `Mods` 文件夹，在主菜单的 Mod 管理界面启用，并按游戏提示确认 `reflection-external` 权限后重启。
+可以通过 Steam 创意工坊订阅，也可以在 [Release](https://github.com/shuainiaoda-bit/probably-stolen-sold-stock-optimizer/releases/tag/v0.1.2) 下载 `SoldStockOptimizer-0.1.2.zip`。解压后将 `SoldStockOptimizer` 文件夹放入游戏目录的 `Mods` 文件夹，在主菜单的 Mod 管理界面启用，并按游戏提示确认 `reflection-external` 权限后重启。
 
 无前置 Mod。相同 Mod 选择一个来源启用即可。停用并重启游戏后恢复原版处理流程。
 

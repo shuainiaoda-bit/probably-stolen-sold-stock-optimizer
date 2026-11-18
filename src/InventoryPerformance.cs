@@ -16,26 +16,59 @@ namespace SoldStockOptimizer
         [ThreadStatic] static bool flushing;
         [ThreadStatic] static List<GameGridInventory> pending;
         [ThreadStatic] static HashSet<GameGridInventory> pendingSet;
+        static readonly List<string> compatibilityNotes = new List<string>();
 
         internal static void Install(Harmony harmony)
         {
-            void Traverse(Type type, string method, int expected, bool all)
+            compatibilityNotes.Clear();
+            void Traverse(Type type, string method, bool all)
             {
                 var replacement = new HarmonyMethod(typeof(InventoryPerformance), all ? nameof(AllItemsCalls) : nameof(CollectCalls));
-                harmony.Patch(AccessTools.Method(type, method), transpiler: replacement);
+                OptionalPatch(harmony, type, method, transpiler: replacement);
             }
-            Traverse(typeof(EmporiumEntry), "GetAllItems", 10, false);
-            Traverse(typeof(EmporiumEntry), "CollectOwnedItems", 1, false);
-            Traverse(typeof(PlayerStore), "FindAllItem", 11, true);
+            Traverse(typeof(EmporiumEntry), "GetAllItems", false);
+            Traverse(typeof(EmporiumEntry), "CollectOwnedItems", false);
+            Traverse(typeof(PlayerStore), "FindAllItem", true);
             foreach (var target in new[] {
-                AccessTools.Method(typeof(InventorySortHelper), "Commit"),
-                AccessTools.Method(typeof(NegociationUIManager), "BuyMultipleItem"),
-                AccessTools.Method(typeof(NegociationUIManager), "SellMultiple") })
-                harmony.Patch(target,
+                (AccessTools.TypeByName("InventorySortHelper"), "Commit"),
+                (typeof(NegociationUIManager), "BuyMultipleItem"),
+                (typeof(NegociationUIManager), "SellMultiple") })
+                OptionalPatch(harmony, target.Item1, target.Item2,
                     prefix: new HarmonyMethod(typeof(InventoryPerformance), nameof(BeginBatch)),
                     finalizer: new HarmonyMethod(typeof(InventoryPerformance), nameof(EndBatch)));
-            harmony.Patch(AccessTools.Method(typeof(GameGridInventory), "Validate"),
+            OptionalPatch(harmony, typeof(GameGridInventory), "Validate",
                 prefix: new HarmonyMethod(typeof(InventoryPerformance), nameof(DeferVisualRefresh)));
+            foreach (var note in compatibilityNotes)
+                UnityEngine.Debug.LogWarning("[SoldStockOptimizer] " + note);
+        }
+
+        static void OptionalPatch(Harmony harmony, Type type, string name, HarmonyMethod prefix = null,
+            HarmonyMethod transpiler = null, HarmonyMethod finalizer = null)
+        {
+            if (type == null) { Note(name + " optional type is unavailable; keeping the existing implementation."); return; }
+            MethodInfo target = null;
+            try
+            {
+                target = AccessTools.Method(type, name);
+                if (target == null)
+                {
+                    Note(type.Name + "." + name + " is unavailable; keeping the existing implementation.");
+                    return;
+                }
+                harmony.Patch(target, prefix: prefix, transpiler: transpiler, finalizer: finalizer);
+            }
+            catch (Exception error)
+            {
+                // Remove only this feature's methods, preserving core and other mods' patches.
+                foreach (var patch in new[] { transpiler, prefix, finalizer })
+                    if (target != null && patch != null) harmony.Unpatch(target, patch.method);
+                Note(type.Name + "." + name + " optional optimization was skipped: " + error.GetType().Name + ".");
+            }
+        }
+
+        static void Note(string message)
+        {
+            if (!compatibilityNotes.Contains(message)) compatibilityNotes.Add(message);
         }
 
         internal static void Reset()
@@ -110,7 +143,11 @@ namespace SoldStockOptimizer
 
         static void CollectItems(GraphNodeStorage root, List<GameItem> results)
         {
-            if (!ModEntry.Enabled || collecting) { GraphUtils.CollectAllChildrenType(root, results); return; }
+            if (!ModEntry.Enabled || collecting)
+            {
+                if (root != null && results != null) results.AddRange(GraphUtils.FindAllChildrenType<GameItem>(root));
+                return;
+            }
             if (root == null || results == null) return;
             if (queue == null) { queue = new Queue<GraphNodeStorage>(); seen = new HashSet<GameItem>(); }
             collecting = true;
@@ -137,23 +174,35 @@ namespace SoldStockOptimizer
         }
 
         static IEnumerable<CodeInstruction> CollectCalls(IEnumerable<CodeInstruction> instructions, MethodBase __originalMethod)
-            => Replace(instructions, __originalMethod, "CollectAllChildrenType", nameof(CollectItems), __originalMethod.Name == "GetAllItems" ? 10 : 1);
+            => Replace(instructions, __originalMethod, "CollectAllChildrenType", nameof(CollectItems));
         static IEnumerable<CodeInstruction> AllItemsCalls(IEnumerable<CodeInstruction> instructions, MethodBase __originalMethod)
-            => Replace(instructions, __originalMethod, "FindAllChildrenType", nameof(AllItems), 11);
+            => Replace(instructions, __originalMethod, "FindAllChildrenType", nameof(AllItems));
 
-        static IEnumerable<CodeInstruction> Replace(IEnumerable<CodeInstruction> instructions, MethodBase original, string name, string replacement, int expected)
+        static bool SameSignature(MethodInfo target, MethodInfo replacement)
         {
+            if (!target.IsStatic || target.ReturnType != replacement.ReturnType) return false;
+            var left = target.GetParameters(); var right = replacement.GetParameters();
+            if (left.Length != right.Length) return false;
+            for (int i = 0; i < left.Length; i++)
+                if (left[i].ParameterType != right[i].ParameterType) return false;
+            return true;
+        }
+
+        static IEnumerable<CodeInstruction> Replace(IEnumerable<CodeInstruction> instructions, MethodBase original, string name, string replacement)
+        {
+            var implementation = AccessTools.Method(typeof(InventoryPerformance), replacement);
             var result = new List<CodeInstruction>(); int count = 0;
             foreach (var code in instructions)
             {
-                if (code.operand is MethodInfo target && target.DeclaringType == typeof(GraphUtils) && target.Name == name &&
-                    target.IsGenericMethod && target.GetGenericArguments()[0] == typeof(GameItem))
+                if (code.opcode == OpCodes.Call && code.operand is MethodInfo target && target.DeclaringType == typeof(GraphUtils) && target.Name == name &&
+                    target.IsGenericMethod && target.GetGenericArguments().Length == 1 && target.GetGenericArguments()[0] == typeof(GameItem) &&
+                    SameSignature(target, implementation))
                 {
-                    code.opcode = OpCodes.Call; code.operand = AccessTools.Method(typeof(InventoryPerformance), replacement); count++;
+                    result.Add(new CodeInstruction(code) { operand = implementation }); count++;
                 }
-                result.Add(code);
+                else result.Add(code);
             }
-            if (count != expected) throw new NotSupportedException(original.Name + " traversal changed; expected " + expected + " calls, found " + count + ".");
+            if (count == 0) Note(original.DeclaringType.Name + "." + original.Name + " has no compatible traversal calls; keeping the existing implementation.");
             return result;
         }
     }

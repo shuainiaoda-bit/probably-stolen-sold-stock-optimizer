@@ -1,15 +1,14 @@
-# 已售物品优化 0.1.1
+# 已售物品优化 0.1.2
 
-新增全店物品查询和同步批量操作的刷新优化，保留原版布局、固定物品、商品数据、增删事件顺序和顾客反馈。
+修复 `GetAllItems traversal changed; expected 10 calls, found 0.` 引起的 Mod 加载失败。
 
-- 600 件原版排列：1514.68 → 460.48 毫秒，约快 3.29 倍。
-- 600 件撤销：1576.53 → 432.36 毫秒。
-- 2000 件全店查询连续 200 次：97.57 → 30.19 毫秒，约快 3.23 倍。
-- 本轮售出 1000 件：4.348 → 0.305 秒；2000 件：18.660 → 0.678 秒。
-- 库存扩展场景 129 项、大量售卖场景 79 项检查通过，未捕获运行时错误。
+- 按实际参数和返回类型匹配查询调用，适应调用数量变化。
+- 对零匹配、可选类型或方法缺失保留现有实现，其他可用优化继续安装。
+- 可选补丁安装失败时只回滚自身对应方法。
+- 保留已售仓库刷新、物品索引和结算清理优化。
 
-所有数字为真实游戏三轮测试的中位数，衡量指定方法耗时。库存压力测试使用扩大的临时仓库与简化背景，不能直接换算为画面帧率。结算销毁加速未作为本次收益承诺。
+通过 24 项离线兼容检查，准确复现旧异常并验证修复后的零匹配行为。本轮未启动游戏；完整实机性能记录见 0.1.1 历史报告。原生权限扫描与发布包哈希另附。
 
-下载 `SoldStockOptimizer-0.1.1.zip`，把其中的 `SoldStockOptimizer` 文件夹放入游戏 `Mods`，在主菜单启用并重启。适用于 1.0.0.15 测试版，无前置 Mod。
+下载 `SoldStockOptimizer-0.1.2.zip`，关闭游戏，将其中 `SoldStockOptimizer` 文件夹替换到游戏 `Mods` 目录，启用后重启。相同 Mod 选择一个来源启用即可。已安装游戏验证基线为 1.0.0.15 测试版，无前置 Mod。
 
-[Steam 创意工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3841557483) · [完整测试报告](https://github.com/shuainiaoda-bit/probably-stolen-sold-stock-optimizer/blob/main/docs/性能检查与测试-0.1.1.md)
+[Steam 创意工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3841557483) · [源码](https://github.com/shuainiaoda-bit/probably-stolen-sold-stock-optimizer)

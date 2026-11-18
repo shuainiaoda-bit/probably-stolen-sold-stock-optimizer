@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "version": "0.1.2",
+  "shippingSha256": "c1fd2350fd6a2e27002ff8885e57eb912dc0a6711789cfeded681078987158cd",
+  "gameSha256": "29c654b03c140ee35311e0108cd818f7979ffb19205644c7b11e385645fbddbb",
+  "compatibilityChecks": 24,
+  "gameExecuted": false,
+  "audioPlayback": false,
+  "priorPerformanceEvidenceVersion": "0.1.1"
+}

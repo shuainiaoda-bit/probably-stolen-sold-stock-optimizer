@@ -3,7 +3,7 @@
   <ID>sold_stock_optimizer</ID>
   <Name>已售物品优化：卖出东西不放在雷霆大包</Name>
   <Author>是大帅鸟</Author>
-  <ModVersion>0.1.1</ModVersion>
+  <ModVersion>0.1.2</ModVersion>
   <Description>优化已售仓库、全店物品查询及批量排列和交易中的重复刷新，保留原版物品数据、事件顺序和顾客反馈结算。</Description>
   <GameVersions><Version>1.0.0.15</Version></GameVersions>
   <Prerequisites/>
