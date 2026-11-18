@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "version": "0.1.2",
+  "workshopId": "3841557483",
+  "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3841557483",
+  "githubVerifiedBeforeSteamUpdate": true,
+  "descriptionReadbackMatches": true,
+  "contentAndMetadataUnchanged": true,
+  "downloadedFilesMatch": true,
+  "subscriptionUnchanged": true,
+  "shippingSha256": "c1fd2350fd6a2e27002ff8885e57eb912dc0a6711789cfeded681078987158cd",
+  "runtimeEvidenceSha256": "f8809fe9ae9b9b2b6d9574cd55a42dbf90bb8cc6d0b6800ff727c90d459fdc15",
+  "descriptionSha256": "9e0d06ea96d9f1a58a427651eb665474fce86a9b2801755b19b6ffe0ce3e373b",
+  "verifiedAtUtc": "2026-11-18T06:10:40.6473854Z"
+}

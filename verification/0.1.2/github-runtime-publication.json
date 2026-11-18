@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "version": "0.1.2",
+  "repository": "https://github.com/shuainiaoda-bit/probably-stolen-sold-stock-optimizer",
+  "release": "https://github.com/shuainiaoda-bit/probably-stolen-sold-stock-optimizer/releases/tag/v0.1.2",
+  "sourceCommit": "722cfd3bc99a92d0402f91ad42b71f8ad973561c",
+  "sourceTree": "653db476a115236c4b348107eb39148d757cf973",
+  "sourceFilesVerified": 12,
+  "productionSourceUnchanged": true,
+  "originalReleaseTagUnchanged": true,
+  "historicalReleasesRetained": true,
+  "oldReleaseAssetsUnchanged": true,
+  "assets": {
+    "compatibility-results.json": "a646a9e61b72f082e136a489cf33d83b65ce12cc6e594fde75df808b5332946e",
+    "RuntimeValidation-0.1.2.json": "f8809fe9ae9b9b2b6d9574cd55a42dbf90bb8cc6d0b6800ff727c90d459fdc15",
+    "RuntimeValidation-0.1.2.md": "e1c4c8eec4a02b92b4c484e0d1ea27099b2bc4bd5d72195149ade368f7f48bf4",
+    "RuntimeValidation-SHA256SUMS.txt": "3f9078286eba071316cd3a89fe3e2f8a67fdf576a9c0b2a580cbf9503dbaf415",
+    "SHA256SUMS.txt": "87dd381b8b40a88bfa438d9533653fd701948021953b3541e13bf7512f18aa88",
+    "SoldStockOptimizer-0.1.2.zip": "13ad05b53372a0405eb905e75604ca3b897303cd71611e762ad475ac9cadba81",
+    "TestReport-0.1.2.md": "62e94e547aa97a4ef2731d95d45a9d2d1b404d53a68bbbee573d2b11cffb12c6"
+  },
+  "downloadedAssetsMatch": true,
+  "shippingSha256": "c1fd2350fd6a2e27002ff8885e57eb912dc0a6711789cfeded681078987158cd",
+  "archiveSha256": "13ad05b53372a0405eb905e75604ca3b897303cd71611e762ad475ac9cadba81",
+  "runtimeEvidenceSha256": "f8809fe9ae9b9b2b6d9574cd55a42dbf90bb8cc6d0b6800ff727c90d459fdc15",
+  "verifiedAtUtc": "2026-11-18T06:09:34.457801+00:00"
+}
