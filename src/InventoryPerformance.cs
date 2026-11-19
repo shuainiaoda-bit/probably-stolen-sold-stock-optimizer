@@ -30,7 +30,7 @@ namespace SoldStockOptimizer
             Traverse(typeof(EmporiumEntry), "CollectOwnedItems", false);
             Traverse(typeof(PlayerStore), "FindAllItem", true);
             foreach (var target in new[] {
-                (AccessTools.TypeByName("InventorySortHelper"), "Commit"),
+                (ModReflect.FindType("InventorySortHelper"), "Commit"),
                 (typeof(NegociationUIManager), "BuyMultipleItem"),
                 (typeof(NegociationUIManager), "SellMultiple") })
                 OptionalPatch(harmony, target.Item1, target.Item2,
@@ -49,7 +49,7 @@ namespace SoldStockOptimizer
             MethodInfo target = null;
             try
             {
-                target = AccessTools.Method(type, name);
+                target = (MethodInfo)ModReflect.Target(type, name);
                 if (target == null)
                 {
                     Note(type.Name + "." + name + " is unavailable; keeping the existing implementation.");
@@ -174,9 +174,9 @@ namespace SoldStockOptimizer
         }
 
         static IEnumerable<CodeInstruction> CollectCalls(IEnumerable<CodeInstruction> instructions, MethodBase __originalMethod)
-            => Replace(instructions, __originalMethod, "CollectAllChildrenType", nameof(CollectItems));
+            => Replace(instructions, __originalMethod);
         static IEnumerable<CodeInstruction> AllItemsCalls(IEnumerable<CodeInstruction> instructions, MethodBase __originalMethod)
-            => Replace(instructions, __originalMethod, "FindAllChildrenType", nameof(AllItems));
+            => Replace(instructions, __originalMethod);
 
         static bool SameSignature(MethodInfo target, MethodInfo replacement)
         {
@@ -188,15 +188,21 @@ namespace SoldStockOptimizer
             return true;
         }
 
-        static IEnumerable<CodeInstruction> Replace(IEnumerable<CodeInstruction> instructions, MethodBase original, string name, string replacement)
+        static IEnumerable<CodeInstruction> Replace(IEnumerable<CodeInstruction> instructions, MethodBase original)
         {
-            var implementation = AccessTools.Method(typeof(InventoryPerformance), replacement);
+            var collector = AccessTools.Method(typeof(InventoryPerformance), nameof(CollectItems));
+            var finder = AccessTools.Method(typeof(InventoryPerformance), nameof(AllItems));
             var result = new List<CodeInstruction>(); int count = 0;
             foreach (var code in instructions)
             {
-                if (code.opcode == OpCodes.Call && code.operand is MethodInfo target && target.DeclaringType == typeof(GraphUtils) && target.Name == name &&
-                    target.IsGenericMethod && target.GetGenericArguments().Length == 1 && target.GetGenericArguments()[0] == typeof(GameItem) &&
-                    SameSignature(target, implementation))
+                MethodInfo implementation = null;
+                if (code.opcode == OpCodes.Call && code.operand is MethodInfo target && target.DeclaringType == typeof(GraphUtils) &&
+                    target.IsGenericMethod && target.GetGenericArguments().Length == 1 && target.GetGenericArguments()[0] == typeof(GameItem))
+                {
+                    var candidate = target.Name == "CollectAllChildrenType" ? collector : target.Name == "FindAllChildrenType" ? finder : null;
+                    if (candidate != null && SameSignature(target, candidate)) implementation = candidate;
+                }
+                if (implementation != null)
                 {
                     result.Add(new CodeInstruction(code) { operand = implementation }); count++;
                 }

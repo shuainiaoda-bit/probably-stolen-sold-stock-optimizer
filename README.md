@@ -1,12 +1,18 @@
 # 已售物品优化：卖出东西不放在雷霆大包
 
-《深空当铺》的独立性能 Mod，版本 **0.1.2**，适用于 **1.0.0.15 测试版**。作者：是大帅鸟。
+《深空当铺》的独立性能 Mod，版本 **0.1.3**，适用于默认公开版 **Build26525552** 和 open_beta **Build26772488**。作者：是大帅鸟。
 
-[Steam 创意工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3841557483) · [下载 0.1.2](https://github.com/shuainiaoda-bit/probably-stolen-sold-stock-optimizer/releases/tag/v0.1.2) · [0.1.1 完整测试报告](docs/性能检查与测试-0.1.1.md)
+[Steam 创意工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3841557483) · [下载 0.1.3](https://github.com/shuainiaoda-bit/probably-stolen-sold-stock-optimizer/releases/tag/v0.1.3) · [0.1.1 完整测试报告](docs/性能检查与测试-0.1.1.md)
 
 同一天连续出售大量商品时，隐藏已售仓库会反复刷新已有商品的 UI。本 Mod 跳过这些不可见的重复刷新，为已售物品建立编号索引，并减少清理时的列表复制。
 
 售卖收入、商品数据、嵌套内容和顾客反馈继续按原版流程处理。需要后续结算的商品仍保留到原版结算完成。
+
+## 0.1.3 兼容更新
+
+改用官方 ModReflect，移除额外反射权限；同时匹配两个分支的仓库遍历调用。两份原版 SDK 的编译、扫描、接口绑定及实际补丁转换通过，beta 完成静音实机交易和库存检查。公开版的独立原生启用未做实机验证。
+
+English: Uses official ModReflect without extra reflection permissions, supporting both traversal implementations. Compilation, native scanning, API binding and actual patch transformations passed for both branch SDKs. Silent native trading and inventory checks passed on beta. Independent native activation on public was not runtime-tested.
 
 ## 0.1.2 加载兼容修复
 
@@ -40,7 +46,7 @@
 
 ## 安装
 
-可以通过 Steam 创意工坊订阅，也可以在 [Release](https://github.com/shuainiaoda-bit/probably-stolen-sold-stock-optimizer/releases/tag/v0.1.2) 下载 `SoldStockOptimizer-0.1.2.zip`。解压后将 `SoldStockOptimizer` 文件夹放入游戏目录的 `Mods` 文件夹，在主菜单的 Mod 管理界面启用，并按游戏提示确认 `reflection-external` 权限后重启。
+可以通过 Steam 创意工坊订阅，也可以在 [Release](https://github.com/shuainiaoda-bit/probably-stolen-sold-stock-optimizer/releases/tag/v0.1.3) 下载 `SoldStockOptimizer-0.1.3.zip`。解压后将 `SoldStockOptimizer` 文件夹放入游戏目录的 `Mods` 文件夹，在主菜单的 Mod 管理界面启用，按游戏原生提示启用后重启。
 
 无前置 Mod。相同 Mod 选择一个来源启用即可。停用并重启游戏后恢复原版处理流程。
 

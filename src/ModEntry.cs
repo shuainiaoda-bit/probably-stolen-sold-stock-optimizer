@@ -46,7 +46,7 @@ namespace SoldStockOptimizer
 
         static void Patch(Type type, string name, string prefix = null, string postfix = null, string transpiler = null)
         {
-            var target = AccessTools.Method(type, name) ?? throw new MissingMethodException(type.FullName, name);
+            var target = ModReflect.Target(type, name);
             HarmonyMethod Method(string method) => method == null ? null : new HarmonyMethod(typeof(ModEntry), method);
             harmony.Patch(target, Method(prefix), Method(postfix), Method(transpiler));
         }
